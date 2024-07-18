@@ -20,6 +20,7 @@ export default function Profile() {
       handleFileUpload(file);
     }
   }, [file]);
+  //4:11
 
   const handleFileUpload = (file) => {
     const storage = getStorage(app);
@@ -35,6 +36,7 @@ export default function Profile() {
         setFilePercentage(Math.round(progress));
       },
 
+      // eslint-disable-next-line no-unused-vars
       (error) => {
         setFileUploadError(true);
       },
