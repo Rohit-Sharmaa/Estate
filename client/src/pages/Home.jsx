@@ -1,6 +1,5 @@
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
-import Listing from "./Listing";
 import { Swiper, SwiperSlide } from "swiper/react";
 import SwiperCore from "swiper";
 import { Navigation } from "swiper/modules";
@@ -8,38 +7,38 @@ import "swiper/css/bundle";
 import ListingItem from "../components/ListingItem.jsx";
 function Home() {
   const [offerListings, setOfferListings] = useState([]);
-  const [saleListings, setSaleListings] = useState([]);
-  const [rentListings, setRentListings] = useState([]);
+  const [vacantRoom, setVacantRoom] = useState([]);
+  const [roomateNeeded, setRoomateNeeded] = useState([]);
   SwiperCore.use([Navigation]);
-  console.log(offerListings);
+
   useEffect(() => {
     const fetchOfferListings = async () => {
       try {
         const res = await fetch("/api/listing/get?offer=true&limit=4");
         const data = await res.json();
         setOfferListings(data);
-        fetchRentListings();
+        fetchRoomateNeededListings();
       } catch (error) {
         console.log(error);
       }
     };
 
-    const fetchRentListings = async () => {
+    const fetchRoomateNeededListings = async () => {
       try {
-        const res = await fetch("/api/listing/get?type=rent&limit=4");
+        const res = await fetch("/api/listing/get?type=roomate_needed&limit=4");
         const data = await res.json();
-        setRentListings(data);
-        fetchSaleListings();
+        setRoomateNeeded(data);
+        fetchVacantRoomListings();
       } catch (error) {
         console.log(error);
       }
     };
 
-    const fetchSaleListings = async () => {
+    const fetchVacantRoomListings = async () => {
       try {
-        const res = await fetch("/api/listing/get?type=sale&limit=4");
+        const res = await fetch("/api/listing/get?type=vacant_room&limit=4");
         const data = await res.json();
-        setSaleListings(data);
+        setVacantRoom(data);
       } catch (error) {
         console.log(error);
       }
@@ -52,16 +51,17 @@ function Home() {
     <div>
       <div className="flex flex-col gap-6 py-28 px-3 max-w-6xl mx-auto">
         <h1 className="text-slate-700 font-bold text-3xl lg: text-6xl ">
-          Find your next <span className="text-slate-500">perfect</span>
+          Share Your Space
           <br />
-          place with ease
+          <span className="text-slate-500">Find Your Room Partner</span>
         </h1>
 
         <div className="text-gray-400 text-xl sm:text-sm">
-          FlateMatchMate is the best place to find your next perfect place to
-          live.
+          Whether you have an extra room to rent or need a room partner to share
+          your space, we have got you covered.
           <br />
-          we have a wide range of properites for you to choose from
+          Join us and make finding the perfect living arrangement easy and
+          hassle-free!
         </div>
 
         <Link
@@ -92,7 +92,7 @@ function Home() {
           <div className="">
             <div className="my-3">
               <h2 className="text-2xl font-semibold text-slate-600">
-                Recent offers
+                Recent offers!
               </h2>
               <Link
                 className="text-sm text-blue-800 hover:underline"
@@ -108,11 +108,11 @@ function Home() {
             </div>
           </div>
         )}
-        {rentListings && rentListings.length > 0 && (
+        {roomateNeeded && roomateNeeded.length > 0 && (
           <div className="">
             <div className="my-3">
               <h2 className="text-2xl font-semibold text-slate-600">
-                Recent places for rent
+                Recent Roomate Needed Listings!
               </h2>
               <Link
                 className="text-sm text-blue-800 hover:underline"
@@ -122,17 +122,17 @@ function Home() {
               </Link>
             </div>
             <div className="flex flex-wrap gap-4">
-              {rentListings.map((listing) => (
+              {roomateNeeded.map((listing) => (
                 <ListingItem listing={listing} key={listing._id} />
               ))}
             </div>
           </div>
         )}
-        {saleListings && saleListings.length > 0 && (
+        {vacantRoom && vacantRoom.length > 0 && (
           <div className="">
             <div className="my-3">
               <h2 className="text-2xl font-semibold text-slate-600">
-                Recent places for sale
+                Recent Vacant Room Listing
               </h2>
               <Link
                 className="text-sm text-blue-800 hover:underline"
@@ -142,7 +142,7 @@ function Home() {
               </Link>
             </div>
             <div className="flex flex-wrap gap-4">
-              {saleListings.map((listing) => (
+              {vacantRoom.map((listing) => (
                 <ListingItem listing={listing} key={listing._id} />
               ))}
             </div>

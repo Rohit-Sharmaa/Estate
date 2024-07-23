@@ -8,7 +8,7 @@ import {
 import { app } from "../firebase";
 import { useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
-//6:36
+
 export default function CreateListing() {
   const { currentUser } = useSelector((state) => state.user);
   const navigate = useNavigate();
@@ -18,7 +18,7 @@ export default function CreateListing() {
     name: "",
     description: "",
     address: "",
-    type: "rent",
+    type: "vacant_room",
     bedrooms: 1,
     bathrooms: 1,
     regularPrice: 5,
@@ -27,11 +27,12 @@ export default function CreateListing() {
     parking: false,
     furnished: false,
   });
+  //console.log(formData);
   const [imageUploadError, setImageUploadError] = useState(false);
   const [uploading, setUploading] = useState(false);
   const [error, setError] = useState(false);
   const [loading, setLoading] = useState(false);
-  console.log(formData);
+
   const handleImageSubmit = (e) => {
     if (files.length > 0 && files.length + formData.imageUrls.length < 7) {
       setUploading(true);
@@ -93,7 +94,7 @@ export default function CreateListing() {
   };
 
   const handleChange = (e) => {
-    if (e.target.id === "sale" || e.target.id === "rent") {
+    if (e.target.id === "vacant_room" || e.target.id === "roomate_needed") {
       setFormData({
         ...formData,
         type: e.target.id,
@@ -193,22 +194,22 @@ export default function CreateListing() {
             <div className="flex gap-2">
               <input
                 type="checkbox"
-                id="sale"
+                id="vacant_room"
                 className="w-5"
                 onChange={handleChange}
-                checked={formData.type === "sale"}
+                checked={formData.type === "vacant_room"}
               />
-              <span>Sell</span>
+              <span>Vacant Room</span>
             </div>
             <div className="flex gap-2">
               <input
                 type="checkbox"
-                id="rent"
+                id="roomate_needed"
                 className="w-5"
                 onChange={handleChange}
-                checked={formData.type === "rent"}
+                checked={formData.type === "roomate_needed"}
               />
-              <span>Rent</span>
+              <span>Roomate Needed</span>
             </div>
             <div className="flex gap-2">
               <input
@@ -218,7 +219,7 @@ export default function CreateListing() {
                 onChange={handleChange}
                 checked={formData.parking}
               />
-              <span>Parking spot</span>
+              <span>Parking</span>
             </div>
             <div className="flex gap-2">
               <input
