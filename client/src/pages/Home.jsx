@@ -65,7 +65,7 @@ function Home() {
         </div>
 
         <Link
-          to={"{/search"}
+          to={"/search"}
           className="text-xs sm:text-sm text-blue-800 font-bold hover:underline"
         >
           Lets get start now...
