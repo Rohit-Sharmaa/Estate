@@ -14,7 +14,7 @@ function Home() {
   useEffect(() => {
     const fetchOfferListings = async () => {
       try {
-        const res = await fetch("/api/listing/get?offer=true&limit=4");
+        const res = await fetch("/api/listing/get?offer=true&limit=6");
         const data = await res.json();
         setOfferListings(data);
         fetchRoomateNeededListings();
@@ -25,7 +25,7 @@ function Home() {
 
     const fetchRoomateNeededListings = async () => {
       try {
-        const res = await fetch("/api/listing/get?type=roomate_needed&limit=4");
+        const res = await fetch("/api/listing/get?type=roomate_needed&limit=6");
         const data = await res.json();
         setRoomateNeeded(data);
         fetchVacantRoomListings();
@@ -36,7 +36,7 @@ function Home() {
 
     const fetchVacantRoomListings = async () => {
       try {
-        const res = await fetch("/api/listing/get?type=vacant_room&limit=4");
+        const res = await fetch("/api/listing/get?type=vacant_room&limit=6");
         const data = await res.json();
         setVacantRoom(data);
       } catch (error) {
@@ -98,7 +98,7 @@ function Home() {
                 className="text-sm text-blue-800 hover:underline"
                 to={"/search?offer=true"}
               >
-                Show more offers
+                Show more offers...
               </Link>
             </div>
             <div className="flex flex-wrap gap-4">
@@ -116,9 +116,9 @@ function Home() {
               </h2>
               <Link
                 className="text-sm text-blue-800 hover:underline"
-                to={"/search?type=rent"}
+                to={"/search?type=roomate_needed"}
               >
-                Show more places for rent
+                Show more...
               </Link>
             </div>
             <div className="flex flex-wrap gap-4">
@@ -136,9 +136,9 @@ function Home() {
               </h2>
               <Link
                 className="text-sm text-blue-800 hover:underline"
-                to={"/search?type=sale"}
+                to={"/search?type=vacant_room"}
               >
-                Show more places for sale
+                Show more...
               </Link>
             </div>
             <div className="flex flex-wrap gap-4">
