@@ -7,7 +7,7 @@ import {
   signInFailure,
 } from "../redux/user/userSlice.js";
 import OAuth from "../components/OAuth.jsx";
-function SignIn() {
+export default function SignIn() {
   const [formData, setFormData] = useState({});
   const { loading, error } = useSelector((state) => state.user);
   const navigate = useNavigate();
@@ -85,5 +85,3 @@ function SignIn() {
     </div>
   );
 }
-
-export default SignIn;
