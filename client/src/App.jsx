@@ -1,7 +1,7 @@
 // eslint-disable-next-line no-unused-vars
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import Home from "./pages/Home";
-import Login from "./pages/Login";
+
 import SignUp from "./pages/SignUp";
 import About from "./pages/About";
 import Profile from "./pages/Profile";
@@ -11,6 +11,7 @@ import CreateListing from "./pages/CreateListing";
 import UpdateListing from "./pages/UpdateListing";
 import Listing from "./pages/Listing";
 import Search from "./pages/Search";
+import Login from "./pages/Login";
 function App() {
   return (
     <BrowserRouter>
