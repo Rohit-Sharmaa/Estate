@@ -29,8 +29,8 @@ function Header() {
       <div className="flex justify-between items-center , max-w-6xl mx-auto">
         <Link to="/">
           <h1 className="font-bold text-sm sm:text-xl flex flex-wrap p-3">
-            <span className="text-slate-500">ShareUr</span>
-            <span className="text-slate-700">Space</span>
+            <span className="text-slate-500">Share</span>
+            <span className="text-slate-700">YourSpace</span>
           </h1>
         </Link>
 
