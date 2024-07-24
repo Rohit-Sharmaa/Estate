@@ -71,13 +71,7 @@ function Home() {
                         Find Your Room Partner
                       </span>
                     </h1>
-                    <div className="text-gray-200 text-xl sm:text-sm mb-6">
-                      Whether you have an extra room to rent or need a room
-                      partner to share your space, we have got you covered.
-                      <br />
-                      Join us and make finding the perfect living arrangement
-                      easy and hassle-free!
-                    </div>
+
                     <Link
                       to={"/search"}
                       className="text-xs sm:text-sm text-blue-200 font-bold hover:underline"
