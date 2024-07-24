@@ -49,7 +49,49 @@ function Home() {
 
   return (
     <div>
-      <div className="flex flex-col gap-6 py-28 px-3 max-w-6xl mx-auto">
+      <div>
+        <Swiper navigation>
+          {offerListings &&
+            offerListings.length > 0 &&
+            offerListings.map((listing) => (
+              <SwiperSlide key={listing._id}>
+                <div
+                  style={{
+                    background: `url(${listing.imageUrls[0]}) center no-repeat`,
+                    backgroundSize: "cover",
+                  }}
+                  className="relative h-[500px]"
+                >
+                  {/* Overlay Text */}
+                  <div className="absolute inset-0 flex flex-col justify-center items-center text-center bg-black bg-opacity-35 text-white p-4">
+                    <h1 className="text-3xl lg:text-6xl font-bold mb-4">
+                      Share Your Space
+                      <br />
+                      <span className="text-slate-300">
+                        Find Your Room Partner
+                      </span>
+                    </h1>
+                    <div className="text-gray-200 text-xl sm:text-sm mb-6">
+                      Whether you have an extra room to rent or need a room
+                      partner to share your space, we have got you covered.
+                      <br />
+                      Join us and make finding the perfect living arrangement
+                      easy and hassle-free!
+                    </div>
+                    <Link
+                      to={"/search"}
+                      className="text-xs sm:text-sm text-blue-200 font-bold hover:underline"
+                    >
+                      Lets get start now...
+                    </Link>
+                  </div>
+                </div>
+              </SwiperSlide>
+            ))}
+        </Swiper>
+      </div>
+
+      {/* <div className="flex flex-col gap-6 py-28 px-3 max-w-6xl mx-auto">
         <h1 className="text-slate-700 font-bold text-3xl lg: text-6xl ">
           Share Your Space
           <br />
@@ -70,26 +112,27 @@ function Home() {
         >
           Lets get start now...
         </Link>
-      </div>
-      <Swiper navigation>
-        {offerListings &&
-          offerListings.length > 0 &&
-          offerListings.map((listing) => (
-            <SwiperSlide key={listing._id}>
-              <div
-                style={{
-                  background: `url(${listing.imageUrls[0]}) center no-repeat`,
-                  backgroundSize: "cover",
-                }}
-                className="h-[500px]"
-              ></div>
-            </SwiperSlide>
-          ))}
-      </Swiper>
-
-      <div className="max-w-6xl mx-auto p-3 flex flex-col gap-8 my-10">
+      </div> */}
+      {/* <div>
+        <Swiper navigation>
+          {offerListings &&
+            offerListings.length > 0 &&
+            offerListings.map((listing) => (
+              <SwiperSlide key={listing._id}>
+                <div
+                  style={{
+                    background: `url(${listing.imageUrls[0]}) center no-repeat`,
+                    backgroundSize: "cover",
+                  }}
+                  className="h-[500px]"
+                ></div>
+              </SwiperSlide>
+            ))}
+        </Swiper>
+      </div> */}
+      <div className=" mx-auto p-3 flex flex-col gap-8 my-10">
         {offerListings && offerListings.length > 0 && (
-          <div className="">
+          <div className="max-w-6xl mx-auto">
             <div className="my-3">
               <h2 className="text-2xl font-semibold text-slate-600">
                 Recent offers!
@@ -108,8 +151,27 @@ function Home() {
             </div>
           </div>
         )}
+
+        <div className="w-full">
+          <Swiper navigation>
+            {offerListings &&
+              offerListings.length > 0 &&
+              offerListings.map((listing) => (
+                <SwiperSlide key={listing._id}>
+                  <div
+                    style={{
+                      background: `url(${listing.imageUrls[0]}) center no-repeat`,
+                      backgroundSize: "cover",
+                    }}
+                    className="h-[500px]"
+                  ></div>
+                </SwiperSlide>
+              ))}
+          </Swiper>
+        </div>
+
         {roomateNeeded && roomateNeeded.length > 0 && (
-          <div className="">
+          <div className="max-w-6xl mx-auto">
             <div className="my-3">
               <h2 className="text-2xl font-semibold text-slate-600">
                 Recent Roomate Needed Listings!
@@ -129,7 +191,7 @@ function Home() {
           </div>
         )}
         {vacantRoom && vacantRoom.length > 0 && (
-          <div className="">
+          <div className="max-w-6xl mx-auto">
             <div className="my-3">
               <h2 className="text-2xl font-semibold text-slate-600">
                 Recent Vacant Room Listing

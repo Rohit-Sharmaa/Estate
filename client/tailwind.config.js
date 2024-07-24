@@ -4,7 +4,7 @@ export default {
   theme: {
     extend: {
       colors: {
-        "custom-blue": "#BED7DC",
+        "custom-blue": "#BED7DC", // You can use any name you like here
       },
     },
   },
