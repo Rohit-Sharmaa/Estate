@@ -1,7 +1,7 @@
 // eslint-disable-next-line no-unused-vars
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import Home from "./pages/Home";
-import SignInn from "./pages/SignIn";
+import Login from "./pages/Login";
 import SignUp from "./pages/SignUp";
 import About from "./pages/About";
 import Profile from "./pages/Profile";
@@ -17,7 +17,7 @@ function App() {
       <Header />
       <Routes>
         <Route path="/" element={<Home />} />
-        <Route path="/sign-in" element={<SignInn />} />
+        <Route path="/sign-in" element={<Login />} />
         <Route path="/sign-up" element={<SignUp />} />
         <Route path="/about" element={<About />} />
         <Route path="/listing/:listingId" element={<Listing />} />
