@@ -5,10 +5,13 @@ import SwiperCore from "swiper";
 import { Navigation } from "swiper/modules";
 import "swiper/css/bundle";
 import ListingItem from "../components/ListingItem.jsx";
+import Loader from "../components/Loader/Loader.jsx";
 function Home() {
   const [offerListings, setOfferListings] = useState([]);
   const [vacantRoom, setVacantRoom] = useState([]);
   const [roomateNeeded, setRoomateNeeded] = useState([]);
+  console.log(offerListings);
+
   SwiperCore.use([Navigation]);
 
   useEffect(() => {
@@ -46,6 +49,10 @@ function Home() {
 
     fetchOfferListings();
   }, []);
+
+  if (offerListings.length === 0) {
+    return <Loader />;
+  }
 
   return (
     <div>
